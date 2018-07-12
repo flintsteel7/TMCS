@@ -6,7 +6,16 @@
   )
 )
 
-; TODO iterative version
+; iterative version
+(define (product fun start next stop)
+  (define (iter str stp result)
+    (if (equal? str stp)
+      result
+      (iter (next str) stp (* result (fun str)))
+    )
+  )
+  (iter start stop 1)
+)
 
 ; use product to calc factorial
 (define (factorial x)
