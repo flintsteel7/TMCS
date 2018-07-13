@@ -21,4 +21,16 @@
 (define (factorial x)
   (product (lambda (x) x) x (lambda (x) (- x 1)) 1))
 
-; TODO use product to approximate pi
+; use product to approximate pi
+(define (approx_pi times)
+  (*
+    (product
+      (lambda (n)
+        (* (/ (* 2 n) (- (* 2 n) 1))
+          (/ (* 2 n) (+ (* 2 n) 1)))
+      )
+      1
+      (lambda (x) (+ x 1))
+      times)
+    2)
+)
